@@ -7,6 +7,6 @@ return [
 
     'database' => [
         'uuid' => false,
-        ''
-    ]
+        '',
+    ],
 ];
