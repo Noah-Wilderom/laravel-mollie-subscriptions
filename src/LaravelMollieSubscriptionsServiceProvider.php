@@ -19,7 +19,7 @@ class LaravelMollieSubscriptionsServiceProvider extends PackageServiceProvider
             ->name('laravel-mollie-subscriptions')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_laravel-mollie-subscriptions_table')
+            ->hasMigration('create_laravel_mollie_subscriptions_table')
             ->hasCommand(LaravelMollieSubscriptionsCommand::class);
     }
 }

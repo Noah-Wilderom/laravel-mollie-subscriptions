@@ -8,12 +8,35 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('laravel_mollie_subscriptions_table', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
+            if(config('mollie_subscriptions.database.uuid'))
+            {
+                $table->uuid()->primary();
+            }
             $table->id();
 
             // add fields
 
             $table->timestamps();
         });
+
+        Schema::create('model_subscriptions', function (Blueprint $table) {
+            $table->id();
+
+            // add fields
+
+            $table->timestamps();
+        });
+
+        if(config('mollie-subscriptions.durations'))
+        {
+            Schema::create('subscription_durations', function (Blueprint $table) {
+                $table->id();
+
+                // add fields
+
+                $table->timestamps();
+            });
+        }
     }
 };
