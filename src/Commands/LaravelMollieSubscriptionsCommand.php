@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace NoahWilderom\LaravelMollieSubscriptions\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class LaravelMollieSubscriptionsCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-mollie-subscriptions';
 
     public $description = 'My command';
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace NoahWilderom\LaravelMollieSubscriptions;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use NoahWilderom\LaravelMollieSubscriptions\Commands\LaravelMollieSubscriptionsCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class LaravelMollieSubscriptionsServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('laravel-mollie-subscriptions')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_laravel-mollie-subscriptions_table')
+            ->hasCommand(LaravelMollieSubscriptionsCommand::class);
     }
 }
