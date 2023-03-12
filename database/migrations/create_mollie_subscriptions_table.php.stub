@@ -8,12 +8,61 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('laravel_mollie_subscriptions_table', function (Blueprint $table) {
+        Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
+            $table->string('title');
+            $table->text('modules');
+            if(! config('mollie-subscriptions.durations'))
+            {
+                $table->decimal('price');
+            }
 
-            // add fields
-
+            if(config('mollie-subscriptions.softdeletes'))
+            {
+                $table->softDeletes();
+            }
             $table->timestamps();
         });
+
+        Schema::create('model_has_subscriptions', function (Blueprint $table) {
+            $table->id();
+            if(config('mollie-subscriptions.durations'))
+            {
+                $table->foreignId('subscription_duration_id')->constrained('subscription_durations');
+            } else {
+                $table->foreignId('subscription_id')->constrained('subscriptions');
+            }
+            $table->string('model_type');
+            $table->string('model_id');
+
+            if(config('mollie-subscriptions.softdeletes'))
+            {
+                $table->softDeletes();
+            }
+            $table->date('deleted_at');
+            $table->timestamps();
+        });
+
+        Schema::create('model_has_subscription_invoices', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('model_has_subscription_id')->constrained('model_has_subscriptions');
+            $table->text('payment_data');
+            $table->string('payment_id');
+            $table->string('invoice_id');
+            $table->date('paid_at');
+            $table->timestamps();
+        });
+
+        if(config('mollie-subscriptions.durations'))
+        {
+            Schema::create('subscription_durations', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('subscription_id')->constrained('subscriptions');
+                $table->integer('months')->default(1);
+                $table->decimal('price');
+                $table->timestamps();
+            });
+        }
     }
 };
