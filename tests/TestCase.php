@@ -3,8 +3,8 @@
 namespace NoahWilderom\LaravelMollieSubscriptions\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use NoahWilderom\LaravelMollieSubscriptions\LaravelMollieSubscriptionsServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

@@ -2,9 +2,9 @@
 
 namespace NoahWilderom\LaravelMollieSubscriptions;
 
+use NoahWilderom\LaravelMollieSubscriptions\Commands\LaravelMollieSubscriptionsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use NoahWilderom\LaravelMollieSubscriptions\Commands\LaravelMollieSubscriptionsCommand;
 
 class LaravelMollieSubscriptionsServiceProvider extends PackageServiceProvider
 {
